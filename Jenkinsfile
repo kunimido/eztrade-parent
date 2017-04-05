@@ -16,7 +16,7 @@ pipeline {
 
     post {
         success {
-            build '/eztrade/eztrade-service-parent/${BRANCH_NAME}'
+            build "/eztrade/eztrade-service-parent/${env.BRANCH_NAME}"
         }
     }
 }
