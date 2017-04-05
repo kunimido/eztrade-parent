@@ -13,4 +13,10 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            build job: "/eztrade/eztrade-service-parent/${env.BRANCH_NAME}", wait: false
+        }
+    }
 }
