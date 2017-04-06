@@ -16,6 +16,7 @@ pipeline {
 
     post {
         success {
+            build job: "/eztrade/eztrade-model/${env.BRANCH_NAME}", wait: false
             build job: "/eztrade/eztrade-service-parent/${env.BRANCH_NAME}", wait: false
         }
     }
