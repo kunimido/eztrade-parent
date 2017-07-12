@@ -46,7 +46,6 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>
                 <configuration>
-                    <showWeaveInfo>true</showWeaveInfo>
                     <aspectLibraries>
                         <aspectLibrary>
                             <groupId>org.springframework</groupId>
@@ -55,14 +54,28 @@
                     </aspectLibraries>
                     <complianceLevel>${maven.compiler.source}</complianceLevel>
                     <encoding>${encoding}</encoding>
+                    <forceAjcCompile>true</forceAjcCompile>
+                    <showWeaveInfo>true</showWeaveInfo>
                     <source>${maven.compiler.source}</source>
+                    <sources/>
                     <target>${maven.compiler.target}</target>
                     <verbose>true</verbose>
+                    <weaveDirectories>
+                        <weaveDirectory>${project.build.outputDirectory}</weaveDirectory>
+                    </weaveDirectories>
                 </configuration>
                 <executions>
                     <execution>
+                        <id>aspectj-compile</id>
+                        <phase>process-classes</phase>
                         <goals>
                             <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>aspectj-test-compile</id>
+                        <phase>process-test-classes</phase>
+                        <goals>
                             <goal>test-compile</goal>
                         </goals>
                     </execution>
