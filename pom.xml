@@ -54,10 +54,10 @@
                         </aspectLibrary>
                     </aspectLibraries>
                     <complianceLevel>${maven.compiler.source}</complianceLevel>
-                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <forceAjcCompile>true</forceAjcCompile>
                     <showWeaveInfo>true</showWeaveInfo>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <sources/>
+                    <testSources/>
                     <verbose>true</verbose>
                 </configuration>
                 <executions>
@@ -68,7 +68,6 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
-                            <sources/>
                             <weaveDirectories>
                                 <weaveDirectory>${project.build.outputDirectory}</weaveDirectory>
                             </weaveDirectories>
@@ -81,7 +80,6 @@
                             <goal>test-compile</goal>
                         </goals>
                         <configuration>
-                            <testSources/>
                             <weaveDirectories>
                                 <weaveDirectory>${project.build.testOutputDirectory}</weaveDirectory>
                             </weaveDirectories>
@@ -114,17 +112,25 @@
         </repository>
     </repositories>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.apache.mina</groupId>
                 <artifactId>mina-core</artifactId>
                 <version>2.0.16</version>
-            </dependency>
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjrt</artifactId>
-                <version>${aspectj.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.quickfixj</groupId>
