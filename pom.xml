@@ -36,8 +36,14 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>integration-test</id>
                         <goals>
                             <goal>integration-test</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>verify</id>
+                        <goals>
                             <goal>verify</goal>
                         </goals>
                     </execution>
@@ -164,6 +170,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <quickfixj.version>1.6.3-bd</quickfixj.version>
+        <skipITs>${skipTests}</skipITs>
         <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
     </properties>
 </project>
