@@ -7,6 +7,7 @@
     <artifactId>eztrade-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <build>
         <pluginManagement>
             <plugins>
@@ -53,16 +54,11 @@
                         </aspectLibrary>
                     </aspectLibraries>
                     <complianceLevel>${maven.compiler.source}</complianceLevel>
-                    <encoding>${encoding}</encoding>
-                    <forceAjcCompile>true</forceAjcCompile>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                     <showWeaveInfo>true</showWeaveInfo>
                     <source>${maven.compiler.source}</source>
-                    <sources/>
                     <target>${maven.compiler.target}</target>
                     <verbose>true</verbose>
-                    <weaveDirectories>
-                        <weaveDirectory>${project.build.outputDirectory}</weaveDirectory>
-                    </weaveDirectories>
                 </configuration>
                 <executions>
                     <execution>
@@ -71,6 +67,12 @@
                         <goals>
                             <goal>compile</goal>
                         </goals>
+                        <configuration>
+                            <sources/>
+                            <weaveDirectories>
+                                <weaveDirectory>${project.build.outputDirectory}</weaveDirectory>
+                            </weaveDirectories>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>aspectj-test-compile</id>
@@ -78,6 +80,12 @@
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
+                        <configuration>
+                            <testSources/>
+                            <weaveDirectories>
+                                <weaveDirectory>${project.build.testOutputDirectory}</weaveDirectory>
+                            </weaveDirectories>
+                        </configuration>
                     </execution>
                 </executions>
                 <dependencies>
@@ -95,36 +103,12 @@
             </plugin>
         </plugins>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjrt</artifactId>
-                <version>${aspectj.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjtools</artifactId>
                 <version>${aspectj.version}</version>
             </dependency>
             <dependency>
@@ -141,9 +125,10 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <properties>
         <aspectj.version>1.8.10</aspectj.version>
-        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
