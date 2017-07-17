@@ -199,6 +199,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <quickfixj.version>1.6.3-bd</quickfixj.version>
         <skipITs>${skipTests}</skipITs>
+        <skipTests>false</skipTests>
         <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
     </properties>
 </project>
