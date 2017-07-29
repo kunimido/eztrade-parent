@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    triggers {
-        upstream(upstreamProjects: "/eztrade/eztrade-parent/${env.BRANCH_NAME}", threshold: hudson.model.Result.SUCCESS)
-    }
-
     tools {
         jdk 'JDK 1.8'
         maven 'Maven 3.5.0'
