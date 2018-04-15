@@ -225,7 +225,7 @@
     </dependencyManagement>
 
     <properties>
-        <aspectj.version>1.8.10</aspectj.version>
+        <aspectj.version>1.8.13</aspectj.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -233,6 +233,6 @@
         <quickfixj.version>1.6.3-bd</quickfixj.version>
         <skipITs>${skipTests}</skipITs>
         <skipTests>false</skipTests>
-        <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
+        <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
     </properties>
 </project>
